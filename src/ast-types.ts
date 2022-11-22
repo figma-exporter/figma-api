@@ -1001,6 +1001,11 @@ export type INSTANCE<ComponentID = string> = FRAME & {
     componentProperties: Map<string, ComponentProperty>;
 }
 
+export type SECTION = {
+    /** An array of top level layers on the section */
+    children: Node[];
+} & Pick<VECTOR, "fills" | "fillGeometry" | "strokes" | "strokeWeight" | "strokeAlign"  | "strokeGeometry">;
+
 export type NodeTypes = {
     /** The root node */
     DOCUMENT: DOCUMENT,
@@ -1034,6 +1039,7 @@ export type NodeTypes = {
     COMPONENT_SET: COMPONENT_SET,
     /** An instance of a component, changes to the component result in the same changes applied to the instance */
     INSTANCE: INSTANCE,
+    SECTION: SECTION,
 };
 
 export type NodeType = keyof NodeTypes;
